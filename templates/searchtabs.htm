@@ -1,0 +1,82 @@
+{% load search_extras %}
+<div id="search-tabs">
+    <ul>
+        <li><a href="#search-resi">Search Residential</a></li>
+        <li><a href="#search-comm">Search Commercial</a></li>
+    </ul>
+    <div id="search-resi" class="search-tab">
+		<form action="/search/" method="post" name="residentialSearch">
+        	{% csrf_token %}
+        	<input type="hidden" name="search_type" value="resi" />
+        	<div id="smallcheckboxbox">
+        		<input class="thecheckbox" type="radio" name="buyorlet" value="Buy" />
+        		<strong>Buy</strong>
+				<input class="thecheckbox" type="radio" name="buyorlet" value="Rent" />
+				<strong>Rent</strong>
+            </div>
+            <label for="search-q">Postcode/Place: </label>
+            <input type="text" name="search_term" id="search_term" />
+            <label>Bedrooms: </label>
+            <select name="no_of_rooms">
+            	{% for i in 10|get_range %}
+            		{% if forloop.first %}
+            			<option value="{{i}}">Required Bedroom Number</option>
+        			{% else %}
+    					<option value="{{i}}">{{i}} Bedroom(s) + </option>
+        			{% endif %}
+            	{% endfor %}
+            </select>
+            <label>From: </label>
+            <select name="price_from">
+            	{% for i in 100|get_range %}
+            		<option value="{{i|index_to_price}}">&pound;{{i|index_to_price}} +</option>
+            	{% endfor %}
+            </select>
+            <label>To: </label>
+            <select name="price_to">
+            	{% for i in 100|get_range %}
+            		<option value="{{i|index_to_price}}">&pound;{{i|index_to_price}} +</option>
+            	{% endfor %}
+            </select>
+            <label>&nbsp;</label><input type="submit" value="search" name="resiSearch" />
+        </form>
+	</div>
+	
+    <div id="search-comm" class="search-tab">
+        <form action="/search/" method="post" name="commercialSearch">
+        	{% csrf_token %}
+        	<input type="hidden" name="search_type" value="comm" />
+			<div id="smallcheckboxbox">
+        		<input class="thecheckbox" type="radio" name="buyorlet" value="Buy" />
+        		<strong>Buy</strong>
+				<input class="thecheckbox" type="radio" name="buyorlet" value="Rent" />
+				<strong>Rent</strong>
+            </div>
+            <label for="search-q">Postcode/Place: </label>
+            <input type="text" name="search_term" id="search_term" />
+            <label>Rooms: </label>
+            <select name="no_of_rooms">
+            	{% for i in 10|get_range %}
+            		{% if forloop.first %}
+            			<option value="{{i}}">Required Room Number</option>
+        			{% else %}
+    					<option value="{{i}}">{{i}} Room(s) + </option>
+        			{% endif %}
+            	{% endfor %}
+            </select>
+            <label>From: </label>
+            <select name="price_from">
+            	{% for i in 100|get_range %}
+            		<option value="{{i|index_to_price}}">&pound;{{i|index_to_price}} +</option>
+            	{% endfor %}
+            </select>
+            <label>To: </label>
+            <select name="price_to">
+            	{% for i in 100|get_range %}
+            		<option value="{{i|index_to_price}}">&pound;{{i|index_to_price}} +</option>
+            	{% endfor %}
+            </select>
+            <label>&nbsp;</label><input type="submit" value="search" name="commSearch" />
+        </form>
+    </div>
+</div>

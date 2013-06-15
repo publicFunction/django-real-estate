@@ -1,0 +1,30 @@
+<div id="homepage-slider">
+    <ul>
+	{% for image in banner %}
+		<li>
+		{% if image.banner.link_option == "I" %}
+			<a href="{{image.link}}">
+				<img src="{{image.image.url}}" alt="{{image.image_alt}}" />
+			</a>
+			{% else %}
+			<img src="{{image.image.url}}" alt="{{image.image_alt}}" />
+			{% endif %}
+			{% if image.content %}
+			<div class="text">
+				{% if image.banner.link_option == "T" %}
+				<span class="content">
+					<a href="{{image.link}}">
+						{{image.content}}	
+					</a>
+				</span>
+				{% else %}
+				<span class="content">
+					{{image.content}}
+				</span>
+				{% endif %}
+			</div>		
+			{% endif %}
+		</li>
+	{% endfor %}
+    </ul>
+</div>
