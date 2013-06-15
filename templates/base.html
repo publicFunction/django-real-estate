@@ -13,7 +13,6 @@
     <title>{%block globalSiteTitle %}{{global_data.site_title}} {{global_data.title_sep}}{% endblock %} {% block pageTitle %}{% endblock %}</title>
     </head>
     <body>
-    	{{global_data|pprint}}
         <div id="main">
             {% include "header.html" %}
             {% include "menu.html" %}
