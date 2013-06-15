@@ -10,9 +10,10 @@
     <script type="text/javascript" src="{{MEDIA_URL}}js/realeastate.js"></script>
     <link rel="stylesheet" href="{{MEDIA_URL}}css/styles.css" type="text/css" />
     <link rel="shortcut icon" href="{{MEDIA_URL}}fav_icon.png" />
-    <title>{%block globalSiteTitle %}{{site_title}} {{title_sep}}{% endblock %} {% block pageTitle %}{% endblock %}</title>
+    <title>{%block globalSiteTitle %}{{global_data.site_title}} {{global_data.title_sep}}{% endblock %} {% block pageTitle %}{% endblock %}</title>
     </head>
     <body>
+    	{{global_data|pprint}}
         <div id="main">
             {% include "header.html" %}
             {% include "menu.html" %}
