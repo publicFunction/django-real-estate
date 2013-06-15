@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_PATH = os.path.abspath(os.path.dirname('manage.py'))
-BASE_URL = "http://localhost/real-estate"
+BASE_URL = ""
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
