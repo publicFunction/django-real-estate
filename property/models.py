@@ -3,8 +3,8 @@ import re
 from django.db import models
 
 def slugify(string):
-	slug = re.sub('[^\w.-]', '', string)
-	return slug
+	slug = re.sub('[^\w+]', '-', string)
+	return slug.lower()
 
 def createShortCode(string):
 	sc = ""
