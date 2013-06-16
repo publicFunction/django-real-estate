@@ -1,9 +1,18 @@
+from django import forms
 from django.contrib import admin
+
+from ckeditor.widgets import CKEditorWidget
 
 from models import *
 
+class PropertyAdminForm(forms.ModelForm):
+	property_desc = forms.CharField(widget=CKEditorWidget())
+	location_desc = forms.CharField(widget=CKEditorWidget())
+	class Meta:
+		model = Property
+
 class PropertyAdmin(admin.ModelAdmin):
-	pass
+    form = PropertyAdminForm
 
 
 admin.site.register(Property, PropertyAdmin)

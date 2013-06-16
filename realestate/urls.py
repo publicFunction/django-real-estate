@@ -6,7 +6,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     
     url(r'^$', include('property.urls')),
-
+    
+    (r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
