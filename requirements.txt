@@ -1,3 +1,5 @@
 django>=1.4.5
 south
 PIL
+django-ckeditor
+django-debug-toolbar
