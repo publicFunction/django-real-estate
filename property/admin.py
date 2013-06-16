@@ -14,5 +14,9 @@ class PropertyAdminForm(forms.ModelForm):
 class PropertyAdmin(admin.ModelAdmin):
     form = PropertyAdminForm
 
-
 admin.site.register(Property, PropertyAdmin)
+
+class CountryAdmin(admin.ModelAdmin):
+	exclude = ('slug','short_code',)
+
+admin.site.register(Country, CountryAdmin)

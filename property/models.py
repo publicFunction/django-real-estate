@@ -6,10 +6,13 @@ def slugify(string):
 	slug = re.sub('[^\w+]', '-', string)
 	return slug.lower()
 
-def createShortCode(string):
+def createShortCode(string, len):
 	sc = ""
 	for i in string.lower().split():
-		sc += i[0]
+		if len == 0:
+			sc += i[0]
+		else:
+			sc = "%s%s%s" % (i[0], i[1], i[2])
 	return sc
 
 class Property(models.Model):
@@ -107,8 +110,14 @@ class Country(models.Model):
 		return self.name
 
 	def save(self, *args, **kwargs):
-		self.slug = slugify(self.name)
-		self.short_code = createShortCode(self.name)
+		if not self.pk:
+			self.slug = slugify(self.name)
+			self.short_code = createShortCode(self.name, 0)
+			for sc in Country.objects.all():
+				print sc.short_code
+				if self.short_code == sc.short_code:
+					print " Short Code : %s exists" % self.short_code
+					self.short_code = createShortCode(self.name, 3)
 		super(Country, self).save(*args, **kwargs)
 
 	class Meta:
