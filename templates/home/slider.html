@@ -14,12 +14,12 @@
 				{% if image.banner.link_option == "T" %}
 				<span class="content">
 					<a href="{{image.link}}">
-						{{image.content}}	
+						{{image.content|safe}}	
 					</a>
 				</span>
 				{% else %}
 				<span class="content">
-					{{image.content}}
+					{{image.content|safe}}
 				</span>
 				{% endif %}
 			</div>		
