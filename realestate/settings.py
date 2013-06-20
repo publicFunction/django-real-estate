@@ -167,6 +167,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.humanize',
     'south',
     'debug_toolbar',
     'ckeditor',
