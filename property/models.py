@@ -37,17 +37,25 @@ class Property(models.Model):
 	location_desc = models.TextField()
 	schedule = models.ForeignKey('Schedule')
 	floorplan = models.ForeignKey('FloorPlan', default='None')
+	featured = models.BooleanField()
 	#image_gallery = models.ForeignKey(Gallery, default='None')
 
 	def __unicode__(self):
 		return "%s for %s " % (self.reference, self.name)
-
+	
+	def get_city_name(self):
+		return self.city.name
+	
+	def get_property_type(self):
+		return "A %s Property" % self.property_type
+	
 	class Meta:
 		verbose_name = "Property"
 		verbose_name_plural = "Properties"
 
 class FeaturedProperty(models.Model):
 	property = models.ForeignKey('Property')
+	
 
 	def __unicode__(self):
 		return self.property
@@ -129,7 +137,7 @@ class City(models.Model):
 	name = models.CharField(max_length=200)
 
 	def __unicode__(self):
-		return "%s in %s" % (self.country, self.name)
+		return "%s in %s" % (self.name, self.country)
 
 	class Meta:
 		verbose_name = "City"
@@ -151,7 +159,7 @@ class FloorPlan(models.Model):
     floorplan = models.FileField(default='None', blank=True, null=True, upload_to='property/floorplan/')
 
     def __unicode__(self):
-    	return self.name
+    	return "%s plan" % (self.name)
 
     class Meta:
 		verbose_name = "Floor Plan"

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load property_tags %}
+{% load property_tags humanize %}
 {% block pageTitle %}Home{% endblock %}
 {% block pageContent %}
 <div id="page-banner">
@@ -12,20 +12,20 @@
 </div>
 <div id="featured-properties">
 	{% for property in featured %}
+	{% if property.featured %}
 	<div id="featured-property-{{ property.id }}" class="featured">
         <div class="featured-image">
 	            <a href="property/{{property.id}}" title="View Property">
             	{% for photo in property.image_gallery.photos.all %}
 	        		{% if forloop.revcounter == 1 %}
 	        			<img src="{{ photo.image.url }}" alt="Property {{property.id}} Image" />
-	    			{% endif %}
-    			{% empty %}
-	    			<img src="{{media_url}}images/ui2/temp_property.jpg" alt="Temp Property Image" /> 
+	    			{% endif %} 
     			{% endfor %}
 	            </a>
         </div>
         <div class="featured-details">
             <h3>Featured Property</h3>
+            <h5>{{property.get_property_type}}</h5>
             <div class="details-info">
                 <div class="info-bed">
                     <span>{{property.rooms}}</span>
@@ -40,18 +40,17 @@
             <div class="details-more-info">
                 <div class="more-info-name">
                     <a href="property/{{property.id}}" title="View Property">
-                    	{{property.house}} {{property.street}}, {{property.city}} {{property.postcode}}
+                    	{{property.house}} {{property.street}}, {{property.get_city_name}} {{property.postcode}}
                     </a>
                 </div>
                 <div class="more-info-price">
-                	
-                	{% if property.sale_type == "LE" %}
+                	{% if property.sale_type.value == "let" %}
                 		(PCM)
                 	{% endif %}
-                    {{property.price}}
+                    &pound;{{property.price|floatformat:2|intcomma}}
                 </div>
                 <div class="more-info-text">
-                    {{property.property_desc}}
+                    {{property.property_desc|truncatewords:10|safe}}
                 </div>
                 <div class="more-info-more">
                     <a href="property/{{property.id}}" title="Read More"></a>
@@ -59,9 +58,11 @@
             </div>
         </div>
     </div>
+    {% endif %}
 	{% endfor %}
 </div>
 <div id="call-to-actions">
+	{% for action in cta %}
     <div class="actions left">
         <h3>Available Residential Property</h3>
         <div class="actionimage">
@@ -73,27 +74,6 @@
             </p>
         </div>
     </div>
-    <div class="actions right">
-        <h3>Maintenance</h3>
-        <div class="actionimage">
-            <img src="{{MEDIA_URL}}/images/cta_maintenance_image.png" alt="Maintenance" />
-        </div>
-        <div class="actiontext">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, clectus pulvinar.
-                <a href="./maintenance" title="View Maintenance">View List&hellip;</a>
-            </p>
-        </div>
-    </div>
-    <div class="actions center">
-        <h3>Available Commercial Property</h3>
-        <div class="actionimage">
-            <img src="{{MEDIA_URL}}/images/cta_commercail_image.png" alt="Available Commercial Property" />
-        </div>
-        <div class="actiontext">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, clectus pulvinar.
-                <a href="./commercial" title="View Residentail List">View List&hellip;</a>
-            </p>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}
