@@ -1,18 +1,18 @@
 * {
-        margin: 0px;
-        padding: 0px;
+    margin: 0px;
+    padding: 0px;
     outline: none;
 }
 
 body {
-    padding: 0px 0px 0px 0px !important;
+    padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
 }
 
 body, th, td, input, textarea {
-        font-family: verdana,tahoma,arial,helvetica;
-        font-size: 12px;
-        color: #57004F;
+    font-family: verdana,tahoma,arial,helvetica;
+    font-size: 12px;
+    color: #57004F;
     padding: 0px 0px 0px 0px !important;
 }
 
@@ -27,13 +27,12 @@ h2 {
 }
 
 h3 {
-        font-size: 1.1em;
-        color:#612147;
+    font-size: 1.1em;
+    color:#612147;
 }
 
 p {
         margin-top: 1.3em;
-        line-height: 1.8em;
         font-size: 11px;
 }
 
@@ -127,11 +126,11 @@ hr {
 }
 
 #menu {
-        float: left;
-        height: 35px;
-        width: 100%;
+	float: left;
+	height: 35px;
+	width: 100%;
     border-top: 1px solid #000;
-        background: url(../images/menu_background.jpg) repeat-x top left;
+    background: url('images/menu_background.jpg') repeat-x top left;
     color: #000;
     font-size: 11px;
 }
@@ -148,7 +147,7 @@ hr {
     width: auto;
     text-align: center;
     line-height: 35px;
-    background: url(../images/menu_seperator.jpg) 100% 7px no-repeat;
+    background: url('images/menu_seperator.jpg') 100% 7px no-repeat;
     
 }
 
@@ -537,9 +536,14 @@ select#room-numbers {
     color: #FFF;
 }
 
-.featured-details h3 {
+.featured-details h3, 
+.featured-details h5 {
     color: #EEDFC9;
     margin: 5px 0px 5px 5px;
+}
+
+.featured-details h5 {
+	font-style: italic;
 }
 
 .details-info {
@@ -564,13 +568,13 @@ select#room-numbers {
 .info-bed {
     width: 40px;
     height: 25px;
-    background: url(../images/details_bed.jpg) no-repeat top left;
+    background: url(images/details_bed.jpg) no-repeat top left;
 }
 
 .info-bath {
     width: 42px;
     height: 25px;
-    background: url(../images/details_bath.jpg) no-repeat top left;
+    background: url(images/details_bath.jpg) no-repeat top left;
     line-height: 25px;
     margin: 0px 0px 0px 5px;
 }
@@ -578,7 +582,7 @@ select#room-numbers {
 .info-ref {
     width: 75px;
     height: 25px;
-    background: url(../images/details_ref.jpg) no-repeat top left;
+    background: url(images/details_ref.jpg) no-repeat top left;
     margin: 0px 0px 0px 0px;
 }
 
@@ -591,6 +595,7 @@ select#room-numbers {
     height: 120px;
     clear: both;
     margin: 0px auto 0px auto;
+    position: relative;
 }
 
 .more-info-name {
@@ -628,10 +633,12 @@ select#room-numbers {
 }
 
 .more-info-more {
-    float: right;
     height: 19px;
     width: 76px;
-    background: url(../images/read_more_button.png) no-repeat top left;
+    background: url('images/read_more_button.png') no-repeat top left;
+    position: absolute;
+    right: 0px;
+    bottom: 2px;
 }
 
 .more-info-more a {
@@ -644,7 +651,7 @@ select#room-numbers {
     width: 100%;
     height: 195px;
     clear: both;
-    background: url(../images/home_sections_background.jpg) repeat-x bottom left;
+    background: url('images/home_sections_background.jpg') repeat-x bottom left;
     padding: 10px 0px 0px 0px;
 }
 
@@ -1610,7 +1617,7 @@ background: url(../images/title_back.gif) no-repeat;
 
 /* Footer */
 #footer {
-        background: url(../images/footer_background.jpg) repeat-x top left #000;
+    background: url('images/footer_background.jpg') repeat-x top left #000;
     clear: both;
     width: 100%;
     height: 43px;
