@@ -1,6 +1,7 @@
 import realestate
 
 from site_setup.models import *
+from office.models import Office
 
 def global_data(request):
 	try:
@@ -15,3 +16,10 @@ def global_data(request):
 	except:
 		site_data = False
 	return {'global_data' : site_data}
+
+def office_data(request):
+	try:
+		office_data = Office.objects.all()
+	except:
+		office_data = False
+	return {'office_data' : office_data}
