@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load property_tags %}
+{% block pageTitle %}{{page_title.option}}{% endblock %}
+{% block pageContent %}
+<div>
+	{% for property in properties %}
+	{{property}}
+	{% endfor %}
+</div>
+<div id="call-to-actions">
+	{% for action in cta %}
+    <div class="actions left">
+        <h3>Available Residential Property</h3>
+        <div class="actionimage">
+            <img src="{{MEDIA_URL}}/images/cta_residential_image.png" alt="Available Residential Property" />
+        </div>
+        <div class="actiontext">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, clectus pulvinar.
+                <a href="./residential" title="View Residentail List">View List&hellip;</a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
