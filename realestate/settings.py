@@ -171,11 +171,13 @@ INSTALLED_APPS = (
     'south',
     'debug_toolbar',
     'ckeditor',
+    'office',
     'site_setup',
     'search',
     'banner',
     'property',
     'staff',
+    'contactus',
 )
 
 # A sample logging configuration. The only tangible logging
