@@ -4,8 +4,11 @@
     </div>      
     <div id="header-contact-numbers">
         <ul>
-            <li>Edinburgh Tel: 0131 226 5050</li>
-            <li>Glasgow Tel: 0141 221 6489</li>
+        	{% if office_data != "None"%}
+        	{% for office in office_data %}
+        	<li>{{office.get_telephone_number}}</li>
+        	{% endfor %}
+        	{% endif %}
         </ul>
     </div>
 </div>
