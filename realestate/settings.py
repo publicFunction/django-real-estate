@@ -175,6 +175,7 @@ INSTALLED_APPS = (
     'search',
     'banner',
     'property',
+    'staff',
 )
 
 # A sample logging configuration. The only tangible logging
