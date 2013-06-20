@@ -155,7 +155,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
-    "realestate.context_processors.global_data", 
+    "realestate.context_processors.global_data",
+    "realestate.context_processors.office_data",  
 )
 
 INSTALLED_APPS = (
